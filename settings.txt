@@ -1,0 +1,1 @@
+{"one_player_rounds": 12, "text_to_image_size": [1, 5], "image_to_text_size": [2, 3], "memory_size": [4, 5], "name_type": "common_name"}
