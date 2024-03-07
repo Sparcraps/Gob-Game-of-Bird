@@ -1,7 +1,0 @@
-Jakob
-[5, 60]
-{"Domherre": 0,5}
-
-Momo
-[10, 100]
-{"Sparris": 0,1}

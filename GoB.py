@@ -11,7 +11,7 @@ import json
 
 class GoB:
     '''The main class of GoB'''
-    GAME_DIR = "C:\\Program1\\Plugg\\0 VSCode scripts\\Python\\ht23\\M6\\Gob-Game-of-Bird"
+    GAME_DIR = "D:\\Program\\Plugg\\0 VSCode scripts\\Python\\Introduktion till informationsteknologi\\M6\\Gob-Game-of-Bird"
 
     def __init__(self):
         os.chdir(self.GAME_DIR)
@@ -31,16 +31,16 @@ class GoB:
     
     def load_users_from_file(self):
         '''Loads users from save file if a save file exists, otherwise creates a save file. Returns relevant data to the main class'''
-        SAVE_FILE_PATH = str(os.getcwd())+"\\"+"savefile.txt"
+        SAVE_FILE_PATH = str(os.getcwd())+"\\save_data\\"+"savefile.txt"
         user_list = []
         latest_user = ""
         is_save_file_created = False
         
         if not os.path.isfile(SAVE_FILE_PATH):
-            open("savefile.txt", "x").close() # Creates a save file
+            open(SAVE_FILE_PATH, "x").close() # Creates a save file
             is_save_file_created = True
         else:
-            with open("savefile.txt", "r") as f:
+            with open(SAVE_FILE_PATH, "r") as f:
                 text_lines = f.readlines()
                 for user_line in range(0, len(text_lines)-1, 4):
                     loaded_user = User(text_lines[user_line].strip(), json.loads(text_lines[user_line+1]), json.loads(text_lines[user_line+2]))
@@ -64,7 +64,8 @@ class GoB:
     
     def save_users_to_file(self, user_list):
         """Saves all users present in the current session to the save file"""
-        with open ("savefile.txt", "w") as f:
+        SAVE_FILE_PATH = str(os.getcwd())+"\\save_data\\"+"savefile.txt"
+        with open (SAVE_FILE_PATH, "w") as f:
             for user in user_list:
                 f.write(user.name + "\n")
                 f.write(json.dumps(user.high_score) + "\n")
