@@ -76,10 +76,10 @@ class GoB:
         
 class Main_window(Tk):
     """GoB window class. An underclass of Tkinter that creates the game window and main menu elements"""
-    BACKGROUND_IMAGE = "Background.jpg"
-    BACKGROUND_IMAGE_GAME_OVER = "Nogame.jpg"
-    USER_IMAGE = "User.png"
-    SETTINGS_IMAGE = "Settings.jpg"
+    BACKGROUND_IMAGE = "images\\Background.jpg"
+    BACKGROUND_IMAGE_GAME_OVER = "images\\Nogame.jpg"
+    USER_IMAGE = "images\\User.png"
+    SETTINGS_IMAGE = "images\\Settings.jpg"
     GAME_FONT = "Courier New"
     LABEL_COLOR = "#7497e3"
     WINDOW_MIN_WIDTH = 711
@@ -894,7 +894,7 @@ class Mode_memory(Game_mode):
 class Settings():
     """GoB file manager class. Used to save/load data to/from text files"""
     def __init__(self):
-        SETTINGS_FILE_PATH = str(os.getcwd())+"\\"+"settings.txt"
+        SETTINGS_FILE_PATH = str(os.getcwd())+"\\save_data\\"+"settings.txt"
 
         self.one_player_rounds = 5
         self.text_to_image_size = (2, 4)
@@ -903,9 +903,9 @@ class Settings():
         self.name_type = "common_name"
 
         if not os.path.isfile(SETTINGS_FILE_PATH):
-            open("settings.txt", "x").close() # Creates a settings file
+            open(SETTINGS_FILE_PATH, "x").close() # Creates a settings file
         else:
-            with open("settings.txt", "r") as f:
+            with open(SETTINGS_FILE_PATH, "r") as f:
                 text_lines = f.readlines()
                 if len(text_lines) > 0: # In case of a corrupt file
                     line = text_lines[0]
@@ -915,7 +915,8 @@ class Settings():
                             setattr(self, key, dct[key])
 
     def save_settings(self):
-        with open("settings.txt", "w") as f:
+        SETTINGS_FILE_PATH = str(os.getcwd())+"\\save_data\\"+"settings.txt"
+        with open(SETTINGS_FILE_PATH, "w") as f:
             json.dump(vars(self), f)
         return
 
