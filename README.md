@@ -1,4 +1,4 @@
-# Gob-Game-of-Bird
+# GoB-Game-of-Bird
  Game of Bird, the best game ever created
 
 _________________________________________________________________________________
